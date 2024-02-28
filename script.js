@@ -1153,6 +1153,7 @@ Promise.all([
 // Cease
 */
 
+/*
 // 54
 console.log("Initiate");
 
@@ -1176,3 +1177,234 @@ Promise.allSettled([promise1, promise2]).then((results) => {
   console.log("Rejected:", rejectedResults);
   console.log("Finalize");
 });
+
+// Initiate
+// Fulfilled: Promise 1
+// Rejected: Promise 2 Error
+// Finalize;
+*/
+
+/*
+// 55
+console.log("Startup");
+
+const fetchData = async () => {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+};
+
+fetchData()
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error.message));
+
+console.log("Shutdown");
+
+// Startup
+// Shutdown
+// GET https://api.example.com/users/data ERR_NAME_NOT_RESOLVED
+// Failed to fetch
+// Failed to fetch
+*/
+
+/*
+// 56
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve("Resolved").then((value) => console.log(value));
+
+console.log("End");
+
+// Start
+// End
+// Resolved
+// Timeout
+*/
+
+/*
+// 57
+console.log("Initialize");
+
+async function fetchData() {
+  const response = await fetch("https://api.example.com/data");
+  const data = await response.json();
+  return data;
+}
+
+fetchData()
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error.message));
+
+console.log("Finalize");
+
+// Initialize
+// Finalize
+// GET Error
+// Failed to fetch
+*/
+
+/*
+// 58
+console.log("Begin");
+
+const promise1 = new Promise((resolve) => {
+  setTimeout(() => resolve("Promise 1"), 1000);
+});
+
+const promise2 = new Promise((resolve) => {
+  setTimeout(() => resolve("Promise 2"), 500);
+});
+
+Promise.all([promise1, promise2]).then((values) => console.log(values));
+
+console.log("Finish");
+
+// Begin
+// Finish
+// [Promise 1, Promise 2]
+*/
+
+/*
+// 59
+console.log("Initiate");
+
+const promise1 = new Promise((resolve) => {
+  setTimeout(() => resolve("Promise 1"), 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => reject(new Error("Promise 2 Error")), 500);
+});
+
+Promise.race([promise1, promise2])
+  .then((value) => console.log(value))
+  .catch((error) => console.error(error.message));
+
+console.log("Complete");
+
+// Initiate
+// Complete
+// Promise 2 Error
+*/
+
+/*
+// 60
+console.log("Fetch");
+
+async function fetchData() {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+}
+
+fetchData()
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error.message));
+
+console.log("Complete");
+
+// Fetch
+// Complete
+// GET Error
+// Failed to fetch
+// Failed to fetch
+*/
+
+/*
+// 61
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 1000);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 500);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => console.log("in setTimeout3"), 1500);
+myPromise(1000).then((res) => console.log("in Promise 3"));
+
+setTimeout(() => console.log("in setTimeout4"), 2000);
+myPromise(5000).then((res) => console.log("in Promise 4"));
+
+// in setTimeout2
+// in setTimeout1
+// in Promise 1
+// in Promise 3
+// in setTimeout3
+// in Promise 2
+// in setTimeout4
+// in Promise 4
+*/
+
+/*
+// 62
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 500);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 1000);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => console.log("in setTimeout3"), 200);
+myPromise(1000).then((res) => console.log("in Promise 3"));
+
+setTimeout(() => console.log("in setTimeout4"), 1500);
+myPromise(5000).then((res) => console.log("in Promise 4"));
+
+// in setTimeout3
+// in setTimeout1
+// in Promise 1
+// in setTimeout2
+// in Promise 3
+// in setTimeout4
+// in Promise 2
+// in Promise 4
+*/
+
+/*
+// 63
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 1500);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 2000);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => console.log("in setTimeout3"), 100);
+myPromise(1000).then((res) => console.log("in Promise 3"));
+
+setTimeout(() => console.log("in setTimeout4"), 500);
+myPromise(5000).then((res) => console.log("in Promise 4"));
+
+// in setTimeout3
+// in setTimeout4
+// in Promise 1
+// in Promise 3
+// in setTimeout1
+// in setTimeout2
+// in Promise 2
+// in Promise 4
+*/
