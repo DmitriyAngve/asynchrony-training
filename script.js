@@ -932,6 +932,7 @@ console.log("End");
 // [{status: fulfiled, value: Promise 1}, {status: fulfiled, value: Promise 2}]
 */
 
+/*
 // 46
 console.log("Initiate");
 
@@ -951,3 +952,227 @@ console.log("Complete");
 // Complete
 // GET https://api.example.com/data net::ERR_NAME_NOT_RESOLVED
 // Failed to fetch
+*/
+
+/*
+// 47
+console.log("Begin");
+
+async function fetchUser(id) {
+  const response = await fetch(`https://api.example.com/users/${id}`);
+  const user = await response.json();
+  return user;
+}
+
+(async () => {
+  const user = await fetchUser(123);
+  console.log(user);
+  console.log("Finish");
+})();
+
+// Begin
+// GET https://api.example.com/users/123 ERR_NAME_NOT_RESOLVED
+// Failed to fetch
+*/
+
+/*
+// 48
+console.log("Initialize");
+
+async function fetchData() {
+  const promise1 = new Promise((resolve) => {
+    setTimeout(() => resolve("Promise 1"), 1000);
+  });
+
+  const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => reject(new Error("Promise 2 Error")), 500);
+  });
+
+  try {
+    const result1 = await promise1;
+    console.log(result1);
+
+    const result2 = await promise2;
+    console.log(result2);
+  } catch (error) {
+    console.error(error.message);
+  }
+
+  console.log("Finalize");
+}
+
+fetchData();
+
+// Initialize
+// Promise 1
+// Promise 2 Error
+// Finalize
+*/
+
+/*
+// 49
+console.log("Fetch");
+
+async function fetchData() {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+}
+
+fetchData()
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error.message));
+
+console.log("Complete");
+
+// Fetch
+// Complete
+// GET https://api.example.com/users/data ERR_NAME_NOT_RESOLVED
+// Failed to fetch
+// Failed to fetch
+
+*/
+
+/*
+// 50
+console.log("Start");
+
+const fetchData = async () => {
+  const promise1 = new Promise((resolve) =>
+    setTimeout(() => resolve("Promise 1"), 1000)
+  );
+  const promise2 = new Promise((resolve, reject) =>
+    setTimeout(() => reject(new Error("Promise 2 Error")), 500)
+  );
+
+  try {
+    const result1 = await promise1;
+    console.log(result1);
+
+    const result2 = await promise2;
+    console.log(result2);
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+fetchData();
+
+console.log("End");
+
+// Start
+// End
+// Promise 1
+// Promise 2 Error
+*/
+
+/*
+// 51
+console.log("Opening");
+
+const fetchData = async () => {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+};
+
+fetchData()
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error.message));
+
+console.log("Closing");
+
+// Opening
+// Closing
+// GET https://api.example.com/users/data ERR_NAME_NOT_RESOLVED
+// Failed to fetch
+// Failed to fetch
+*/
+
+/*
+// 52
+console.log("Initialization");
+
+async function fetchData() {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    throw error;
+  }
+}
+
+(async () => {
+  const data = await fetchData();
+  console.log(data);
+  console.log("Finalization");
+})();
+
+// Initialization
+// GET https://api.example.com/users/data ERR_NAME_NOT_RESOLVED
+// Failed to fetch
+// Failed to fetch
+*/
+
+/*
+// 53
+console.log("Commence");
+
+const promise1 = new Promise((resolve) =>
+  setTimeout(() => resolve("Promise 1"), 1000)
+);
+
+const promise2 = new Promise((resolve, reject) =>
+  setTimeout(() => reject(new Error("Promise 2 Error")), 500)
+);
+
+Promise.all([
+  promise1.catch((error) => error),
+  promise2.catch((error) => error),
+])
+  .then(([result1, result2]) => {
+    console.log(result1, result2);
+    console.log("Cease");
+  })
+  .catch((error) => console.error(error.message));
+
+// Commence
+// Promise 1 Error: Promise 2 Error
+// Cease
+*/
+
+// 54
+console.log("Initiate");
+
+const promise1 = new Promise((resolve) =>
+  setTimeout(() => resolve("Promise 1"), 1000)
+);
+
+const promise2 = new Promise((resolve, reject) =>
+  setTimeout(() => reject(new Error("Promise 2 Error")), 500)
+);
+
+Promise.allSettled([promise1, promise2]).then((results) => {
+  const fulfilledResults = results
+    .filter((result) => result.status === "fulfilled")
+    .map((result) => result.value);
+  const rejectedResults = results
+    .filter((result) => result.status === "rejected")
+    .map((result) => result.reason.message);
+
+  console.log("Fulfilled:", fulfilledResults);
+  console.log("Rejected:", rejectedResults);
+  console.log("Finalize");
+});
