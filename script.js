@@ -1408,3 +1408,571 @@ myPromise(5000).then((res) => console.log("in Promise 4"));
 // in Promise 2
 // in Promise 4
 */
+
+/*
+// 64
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 2000);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 150);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => console.log("in setTimeout3"), 2500);
+myPromise(1000).then((res) => console.log("in Promise 3"));
+
+setTimeout(() => console.log("in setTimeout4"), 1000);
+myPromise(5000).then((res) => console.log("in Promise 4"));
+
+// in setTimeout2
+// in Promise 1
+// in Promise 3
+// in setTimeout4
+// in setTimeout1
+// in Promise 2
+// in setTimeout3
+// in Promise 4
+*/
+
+/*
+// 65
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 100);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 200);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => console.log("in setTimeout3"), 300);
+myPromise(1000).then((res) => console.log("in Promise 3"));
+
+setTimeout(() => console.log("in setTimeout4"), 400);
+myPromise(5000).then((res) => console.log("in Promise 4"));
+
+// in setTimeout1
+// in setTimeout2
+// in setTimeout3
+// in setTimeout4
+// in Promise 1
+// in Promise 3
+// in Promise 2
+// in Promise 4
+*/
+
+/*
+// 66
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 100);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 200);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => console.log("in setTimeout3"), 300);
+myPromise(1500).then((res) => console.log("in Promise 3"));
+
+setTimeout(() => console.log("in setTimeout4"), 400);
+myPromise(500).then((res) => console.log("in Promise 4"));
+
+// in setTimeout1
+// in setTimeout2
+// in setTimeout3
+// in setTimeout4
+// in Promise 4
+// in Promise 1
+// in Promise 3
+// in Promise 2
+*/
+
+/*
+// 67
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 200);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => {
+  console.log("in setTimeout2");
+  myPromise(1500).then((res) => console.log("in Promise 2"));
+}, 300);
+
+myPromise(2000).then((res) => console.log("in Promise 3"));
+setTimeout(() => {
+  console.log("in setTimeout3");
+  myPromise(100).then((res) => console.log("in Promise 4"));
+}, 500);
+
+myPromise(500).then((res) => console.log("in Promise 5"));
+
+// in setTimeout1
+// in setTimeout2
+// in setTimeout3
+// in Promise 5
+// in Promise 4
+// in Promise 1
+// in Promise 2
+// in Promise 3
+*/
+
+/*
+// 68
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => {
+  console.log("in setTimeout1");
+  myPromise(1000).then((res) => console.log("in Promise 1"));
+}, 200);
+
+setTimeout(() => console.log("in setTimeout2"), 300);
+
+setTimeout(() => {
+  console.log("in setTimeout3");
+  myPromise(1500).then((res) => console.log("in Promise 2"));
+}, 100);
+
+setTimeout(() => console.log("in setTimeout4"), 500);
+
+myPromise(2000).then((res) => console.log("in Promise 3"));
+
+myPromise(500).then((res) => console.log("in Promise 4"));
+
+// in setTimeout3
+// in setTimeout1
+// in setTimeout2
+// in setTimeout4
+// in Promise 4
+// in Promise 1
+// in Promise 2
+// in Promise 3
+*/
+
+/*
+// 69
+const myPromise = (delay) => new Promise((res, rej) => { setTimeout(res, delay) });
+
+setTimeout(() => console.log('in setTimeout1'), 300);
+myPromise(1000).then(res => console.log('in Promise 1'));
+
+setTimeout(() => {
+  console.log('in setTimeout2');
+  myPromise(1500).then(res => console.log('in Promise 2'));
+}, 200);
+
+setTimeout(() => console.log('in setTimeout3'), 500);
+
+myPromise(2000).then(res => console.log('in Promise 3'));
+
+myPromise(500).then(res => console.log('in Promise 4'));
+
+// in setTimeout2
+// in setTimeout1
+// in setTimeout3
+// in Promise 4
+// in Promise 1
+// in Promise 2
+// in Promise 3
+*/
+
+/*
+// 70
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 100);
+
+setTimeout(() => {
+  console.log("in setTimeout2");
+  myPromise(1500).then((res) => console.log("in Promise 1"));
+}, 300);
+
+setTimeout(() => console.log("in setTimeout3"), 200);
+
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+
+setTimeout(() => {
+  console.log("in setTimeout4");
+  myPromise(1000).then((res) => console.log("in Promise 4"));
+}, 500);
+
+// in setTimeout1
+// in setTimeout3
+// in setTimeout2
+// in Promise 3
+// in setTimeout4
+// in Promise 4
+// in Promise 2
+// in Promise 1
+*/
+
+/*
+// 71
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => {
+  console.log("in setTimeout1");
+  myPromise(1000).then((res) => console.log("in Promise 1"));
+}, 200);
+
+myPromise(500).then((res) => console.log("in Promise 2"));
+setTimeout(() => console.log("in setTimeout2"), 300);
+
+myPromise(2000).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 400);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => {
+  console.log("in setTimeout4");
+
+  myPromise(500).then((res) => console.log("in Promise 5"));
+}, 100);
+
+// in setTimeout4
+// in setTimeout1
+// in setTimeout2
+// in setTimeout3
+// in Promise 2
+// in Promise 5
+// in Promise 4
+// in Promise 1
+// in Promise 3
+*/
+
+/*
+// 72
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 200);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 500);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 100);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 300);
+
+// in setTimeout3
+// in setTimeout1
+// in setTimeout4
+// in setTimeout2
+// in Promise 3
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 73
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => {
+  console.log("in setTimeout1");
+  myPromise(1000).then((res) => console.log("in Promise 1"));
+}, 200);
+
+myPromise(500).then((res) => console.log("in Promise 2"));
+setTimeout(() => console.log("in setTimeout2"), 400);
+
+myPromise(2000).then((res) => console.log("in Promise 3"));
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+
+setTimeout(() => console.log("in setTimeout3"), 300);
+
+setTimeout(() => console.log("in setTimeout4"), 100);
+
+// in setTimeout4
+// in setTimeout1
+// in setTimeout3
+// in setTimeout2
+// in Promise 2
+// in Promise 1
+// in Promise 4
+// in Promise 3
+*/
+
+/*
+// 74
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => {
+  console.log("in setTimeout1");
+  myPromise(1000).then((res) => console.log("in Promise 1"));
+}, 100);
+
+myPromise(500).then((res) => console.log("in Promise 2"));
+setTimeout(() => console.log("in setTimeout2"), 300);
+
+myPromise(2000).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 200);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 400);
+
+// in setTimeout1
+// in setTimeout3
+// in setTimeout2
+// in setTimeout4
+// in Promise 2
+// in Promise 1
+// in Promise 4
+// in Promise 3
+*/
+
+/*
+// 75
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 200);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 300);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 100);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 400);
+
+// in setTimeout3
+// in setTimeout1
+// in setTimeout2
+// in setTimeout4
+// in Promise 3
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 76
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => {
+  console.log("in setTimeout1");
+  myPromise(1000).then((res) => console.log("in Promise 1"));
+}, 300);
+
+myPromise(500).then((res) => console.log("in Promise 2"));
+setTimeout(() => console.log("in setTimeout2"), 400);
+
+myPromise(2000).then((res) => console.log("in Promise 3"));
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+
+setTimeout(() => console.log("in setTimeout3"), 100);
+
+setTimeout(() => console.log("in setTimeout4"), 200);
+
+// in setTimeout3
+// in setTimeout4
+// in setTimeout1
+// in setTimeout2
+// in Promise 2
+// in Promise 1
+// in Promise 4
+// in Promise 3
+*/
+
+/*
+// 77
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 300);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 200);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => {
+  console.log("in setTimeout3");
+  myPromise(1500).then((res) => console.log("in Promise 3"));
+}, 400);
+
+setTimeout(() => console.log("in setTimeout4"), 500);
+
+myPromise(500).then((res) => console.log("in Promise 4"));
+
+// in setTimeout2
+// in setTimeout1
+// in setTimeout3
+// in setTimeout4
+// in Promise 4
+// in Promise 1
+// in Promise 3
+// in Promise 2
+*/
+
+/*
+// 78
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 100);
+
+setTimeout(() => {
+  console.log("in setTimeout2");
+  myPromise(1500).then((res) => console.log("in Promise 1"));
+}, 300);
+
+setTimeout(() => console.log("in setTimeout3"), 200);
+
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+setTimeout(() => {
+  console.log("in setTimeout4");
+  myPromise(500).then((res) => console.log("in Promise 3"));
+}, 500);
+
+myPromise(1000).then((res) => console.log("in Promise 4"));
+
+// in setTimeout1
+// in setTimeout3
+// in setTimeout2
+// in setTimeout4
+// in Promise 3
+// in Promise 4
+// in Promise 1
+// in Promise 2
+*/
+
+/*
+// 79
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 300);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 400);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => {
+  console.log("in setTimeout3");
+  myPromise(1500).then((res) => console.log("in Promise 4"));
+}, 200);
+
+setTimeout(() => console.log("in setTimeout4"), 500);
+
+// in setTimeout3
+// in setTimeout1
+// in setTimeout2
+// in Promise 3
+// in setTimeout4
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 80
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 400);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => {
+  console.log("in setTimeout2");
+  myPromise(1500).then((res) => console.log("in Promise 2"));
+}, 200);
+
+setTimeout(() => console.log("in setTimeout3"), 300);
+myPromise(2000).then((res) => console.log("in Promise 3"));
+
+myPromise(500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 100);
+
+// in setTimeout4
+// in setTimeout2
+// in setTimeout3
+// in setTimeout1
+// in Promise 4
+// in Promise 1
+// in Promise 2
+// in Promise 3
+*/
+
+// 81
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => {
+  console.log("in setTimeout1");
+  myPromise(1000).then((res) => console.log("in Promise 1"));
+}, 300);
+
+myPromise(500).then((res) => console.log("in Promise 2"));
+setTimeout(() => console.log("in setTimeout2"), 400);
+
+myPromise(2000).then((res) => console.log("in Promise 3"));
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+
+setTimeout(() => console.log("in setTimeout3"), 200);
+
+setTimeout(() => console.log("in setTimeout4"), 100);
+
+// in setTimeout4
+// in setTimeout3
+// in setTimeout1
+// in setTimeout2
+// in Promise 2
+// in Promise 1
+// in Promise 4
+// in Promise 3
