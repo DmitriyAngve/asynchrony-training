@@ -1946,6 +1946,7 @@ setTimeout(() => console.log("in setTimeout4"), 100);
 // in Promise 3
 */
 
+/*
 // 81
 const myPromise = (delay) =>
   new Promise((res, rej) => {
@@ -1976,3 +1977,1238 @@ setTimeout(() => console.log("in setTimeout4"), 100);
 // in Promise 1
 // in Promise 4
 // in Promise 3
+*/
+
+/*
+// 82
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 3
+// 5
+// 2
+// 6
+// 4
+*/
+
+/*
+// 83
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 3
+// 5
+// 2
+// 6
+// 4
+*/
+
+/*
+// 84
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+setTimeout(() => console.log(3));
+
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+setTimeout(() => console.log(5));
+
+Promise.resolve().then(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 2
+// 6
+// 3
+// 5
+// 4
+*/
+
+/*
+// 85
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+setTimeout(() => console.log(4));
+
+setTimeout(() => console.log(5));
+
+Promise.resolve().then(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 2
+// 3
+// 6
+// 4
+// 5
+*/
+
+/*
+// 86
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => setTimeout(() => console.log(3)));
+
+setTimeout(() => console.log(4));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 5
+// 2
+// 4
+// 6
+// 3
+*/
+
+/*
+// 87
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+setTimeout(() => console.log(3));
+
+Promise.resolve().then(() => console.log(4));
+
+setTimeout(() => console.log(5));
+
+Promise.resolve().then(() => setTimeout(() => console.log(6)));
+
+console.log(7);
+
+// 1
+// 7
+// 2
+// 4
+// 3
+// 5
+// 6
+*/
+
+/*
+// 88
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => setTimeout(() => console.log(3)));
+
+Promise.resolve().then(() => console.log(4));
+
+setTimeout(() => console.log(5));
+
+Promise.resolve().then(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 4
+// 6
+// 2
+// 5
+// 3
+*/
+
+/*
+// 89
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+Promise.resolve().then(() => setTimeout(() => console.log(3)));
+
+setTimeout(() => console.log(4));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 2
+// 5
+// 4
+// 6
+// 3
+*/
+
+/*
+// 90
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+Promise.resolve().then(() => console.log(4));
+
+setTimeout(() => console.log(5));
+
+Promise.resolve().then(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 3
+// 4
+// 6
+// 2
+// 5
+*/
+
+/*
+// 91
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+setTimeout(() => console.log(4));
+
+setTimeout(() => console.log(5));
+
+Promise.resolve().then(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 2
+// 3
+// 6
+// 4
+// 5
+*/
+
+/*
+// 92
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => setTimeout(() => console.log(3)));
+
+Promise.resolve().then(() => console.log(4));
+
+setTimeout(() => console.log(5));
+
+Promise.resolve().then(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 4
+// 6
+// 2
+// 5
+// 3
+*/
+
+/*
+// 93
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+async function asyncFunc() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  console.log(3);
+}
+
+Promise.resolve().then(() => asyncFunc());
+
+Promise.all([
+  Promise.resolve().then(() => console.log(4)),
+  Promise.resolve().then(() => console.log(5)),
+]).then(() => console.log(6));
+
+setTimeout(() => console.log(7), 500);
+
+// 1
+// 2
+// 4
+// 5
+// 6
+// 7
+// 3
+*/
+
+/*
+// 94
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+async function asyncFunc() {
+  await new Promise((resolve) => setTimeout(resolve, 800));
+  console.log(3);
+}
+
+Promise.all([
+  Promise.resolve().then(() => console.log(4)),
+  Promise.resolve().then(() => console.log(5)),
+]).then(() => console.log(6));
+
+setTimeout(() => console.log(7), 400);
+
+Promise.resolve().then(() => asyncFunc());
+
+// 1
+// 2
+// 4
+// 5
+// 6
+// 7
+// 3
+*/
+
+/*
+// 95
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+async function asyncFunc() {
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  console.log(3);
+}
+
+Promise.all([
+  Promise.resolve().then(() => console.log(4)),
+  Promise.resolve().then(() => console.log(5)),
+]).then(() => console.log(6));
+
+setTimeout(() => console.log(7), 300);
+
+Promise.resolve().then(() => asyncFunc());
+
+// 1
+// 2
+// 4
+// 5
+// 6
+// 7
+// 3
+*/
+
+/*
+// 96
+console.log(1);
+
+Promise.resolve().then(() => console.log(2));
+
+async function asyncFunc() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  console.log(3);
+}
+
+Promise.all([
+  Promise.resolve().then(() => console.log(4)),
+  Promise.resolve().then(() => console.log(5)),
+]).then(() => console.log(6));
+
+setTimeout(() => console.log(7), 200);
+
+Promise.resolve().then(() => asyncFunc());
+
+// 1
+// 2
+// 4
+// 5
+// 6
+// 7
+// 3
+*/
+
+/*
+// 97
+setTimeout(function timeout() {
+  console.log("Таймаут");
+}, 0);
+
+let p = new Promise(function (resolve, reject) {
+  console.log("Создание промиса");
+  resolve();
+});
+
+p.then(function () {
+  console.log("Обработка промиса");
+});
+
+console.log("Конец скрипта");
+
+// Создание промиса
+// Конец скрипта
+// Обработка промиса
+// Таймаут
+*/
+
+/*
+// 98
+setTimeout(function timeout() {
+  console.log("Таймаут");
+}, 0);
+
+console.log("Конец скрипта");
+
+let p = new Promise(function (resolve, reject) {
+  console.log("Создание промиса");
+  resolve();
+});
+
+p.then(function () {
+  console.log("Обработка промиса");
+});
+
+// Конец скрипта
+// Создание промиса
+// Обработка промиса
+// Таймаут
+*/
+
+/*
+// 99
+console.log("Конец скрипта");
+
+setTimeout(function timeout() {
+  console.log("Таймаут");
+}, 0);
+
+let p = new Promise(function (resolve, reject) {
+  console.log("Создание промиса");
+  resolve();
+});
+
+p.then(function () {
+  console.log("Обработка промиса");
+});
+
+// Конец скрипта
+// Создание промиса
+// Обработка промиса
+// Таймаут
+*/
+
+/*
+// 100
+let p = new Promise(function (resolve, reject) {
+  console.log("Создание промиса");
+  resolve();
+});
+
+p.then(function () {
+  console.log("Обработка промиса");
+});
+
+console.log("Конец скрипта");
+
+setTimeout(function timeout() {
+  console.log("Таймаут");
+}, 0);
+
+// Создание промиса
+// Конец скрипта
+// Обработка промиса
+// Таймаут
+*/
+
+/*
+// 101
+let p = new Promise(function (resolve, reject) {
+  console.log("Создание промиса");
+  resolve();
+});
+
+p.then(function () {
+  console.log("Обработка промиса");
+});
+
+setTimeout(function timeout() {
+  console.log("Таймаут");
+}, 0);
+
+console.log("Конец скрипта");
+
+// Создание промиса
+// Конец скрипта
+// Обработка промиса
+// Таймаут
+*/
+
+/*
+// 102
+let acc = 1;
+console.log("Call 1:", acc);
+
+acc++;
+console.log("Call 2:", acc);
+
+setTimeout(() => {
+  acc++;
+  console.log("Call 3:", acc);
+}, 0);
+
+let anotherAcc = acc;
+console.log("Call 4:", anotherAcc, acc);
+
+// Call 1: 1
+// Call 2: 2
+// Call 4: 2 2
+// Call 3: 3
+*/
+
+/*
+// 103
+let acc = 1;
+console.log("Call 1:", acc);
+
+acc++;
+console.log("Call 2:", acc);
+
+Promise.resolve().then(() => {
+  acc++;
+  console.log("Call 3:", acc);
+});
+
+let anotherAcc = acc;
+console.log("Call 4:", anotherAcc, acc);
+
+// Call 1: 1
+// Call 2: 2
+// Call 4: 2 2
+// Call 1: 3
+*/
+
+/*
+// 104
+async function asyncTask() {
+  let acc = 1;
+  console.log("Call 1:", acc);
+
+  acc++;
+  console.log("Call 2:", acc);
+
+  await new Promise((resolve) => setTimeout(resolve, 0));
+
+  acc++;
+  console.log("Call 3:", acc);
+
+  let anotherAcc = acc;
+  console.log("Call 4:", anotherAcc, acc);
+}
+
+asyncTask();
+
+// Call 1: 1
+// Call 2: 2
+// Call 3: 3
+// Call 4: 3 3
+
+*/
+
+/*
+// 105
+function asyncTask(callback) {
+  let acc = 1;
+  console.log("Call 1:", acc);
+
+  acc++;
+  console.log("Call 2:", acc);
+
+  setTimeout(() => {
+    acc++;
+    console.log("Call 3:", acc);
+    callback(acc);
+  }, 0);
+}
+
+asyncTask((anotherAcc) => {
+  console.log("Call 4:", anotherAcc);
+});
+
+// Call 1: 1
+// Call 2: 2
+// Call 3: 3
+// Call 4: 3
+*/
+
+/*
+// 106
+let acc = 1;
+console.log("Call 1:", acc);
+
+acc++;
+console.log("Call 2:", acc);
+
+Promise.resolve()
+  .then(() => {
+    acc++;
+    console.log("Call 3:", acc);
+  })
+  .catch((error) => console.error(error));
+
+let anotherAcc = acc;
+console.log("Call 4:", anotherAcc, acc);
+
+// Call 1: 1
+// Call 2: 2
+// Call 4: 2 2
+// Call 3: 3
+*/
+
+/*
+// 107
+let acc = 1;
+
+function doSomething() {
+  setTimeout(() => {
+    acc++;
+    console.log("Call", acc);
+    if (acc < 4) {
+      doSomething();
+    }
+  }, 0);
+}
+
+doSomething();
+
+// Call 2
+// Call 3
+// Call 4
+*/
+
+/*
+// 108
+setTimeout(function timeout() {
+  console.log("Таймаут");
+}, 0);
+
+let p = new Promise(function (resolve, reject) {
+  console.log("Создание промиса");
+  resolve();
+});
+
+p.then(function () {
+  console.log("Обработка промиса");
+});
+
+console.log("Конец скрипта");
+
+// Создание промиса
+// Конец скрипта
+// Обработка промиса
+// Таймаут
+*/
+
+/*
+// 109
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+
+// 1
+// 7
+// 3
+// 5
+// 2
+// 6
+// 4
+*/
+
+/*
+// 110
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.reject(3).catch(console.log);
+
+new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+Promise.resolve(5).then(console.log);
+
+console.log(6);
+
+setTimeout(() => console.log(7), 0);
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 111
+async function asyncTask() {
+  console.log(1);
+
+  await new Promise((resolve) => setTimeout(resolve));
+
+  console.log(2);
+
+  try {
+    await Promise.reject(3);
+  } catch (error) {
+    console.log(error);
+  }
+
+  await new Promise((resolve) => setTimeout(resolve)).then(() =>
+    console.log(4)
+  );
+
+  await Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => console.log(7), 0);
+}
+
+asyncTask();
+
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+*/
+
+/*
+// 112
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  });
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 0);
+}
+
+asyncTask();
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 113
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.reject(3).catch(console.log);
+
+new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+Promise.resolve(5).then(console.log);
+
+console.log(6);
+
+setTimeout(() => console.log(7), 0);
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 114
+let count = 1;
+
+function doSomething() {
+  console.log(count++);
+  if (count <= 7) {
+    setTimeout(doSomething, 0);
+  }
+}
+
+doSomething();
+
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+*/
+
+/*
+// 115
+async function asyncTask() {
+  console.log(1);
+
+  await new Promise((resolve) => setTimeout(resolve));
+
+  console.log(2);
+
+  try {
+    await Promise.reject(3);
+  } catch (error) {
+    console.log(error);
+  }
+
+  await new Promise((resolve) => setTimeout(resolve)).then(() =>
+    console.log(4)
+  );
+
+  await Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => console.log(7), 0);
+}
+
+asyncTask();
+
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+*/
+
+/*
+// 116
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  });
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 0);
+}
+
+asyncTask();
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 117
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.reject(3).catch(console.log);
+
+new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+Promise.resolve(5).then(console.log);
+
+console.log(6);
+
+setTimeout(() => console.log(7), 0);
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 118
+(async () => {
+  console.log(1);
+
+  setTimeout(() => console.log(2));
+
+  await Promise.reject(3).catch(console.log);
+
+  await new Promise((resolve) => setTimeout(resolve)).then(() =>
+    console.log(4)
+  );
+
+  await Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => console.log(7), 0);
+})();
+
+// 1
+// 3
+// 2
+// 4
+// 5
+// 6
+// 7
+*/
+
+/*
+// 119
+async function asyncTask() {
+  console.log(1);
+
+  setTimeout(() => console.log(2));
+
+  await Promise.reject(3).catch(console.log);
+
+  await new Promise((resolve) => setTimeout(resolve)).then(() =>
+    console.log(4)
+  );
+
+  await Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => console.log(7), 0);
+}
+
+asyncTask();
+
+// 1
+// 3
+// 2
+// 4
+// 5
+// 6
+// 7
+*/
+
+/*
+// 120
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  });
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 0);
+}
+
+asyncTask();
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 121
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.reject(3).catch(console.log);
+
+new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+Promise.resolve(5).then(console.log);
+
+console.log(6);
+
+setTimeout(() => console.log(7), 0);
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 122
+async function asyncTask() {
+  console.log(1);
+
+  await new Promise((resolve) => setTimeout(resolve));
+
+  console.log(2);
+
+  try {
+    await Promise.reject(3);
+  } catch (error) {
+    console.log(error);
+  }
+
+  await new Promise((resolve) => setTimeout(resolve)).then(() =>
+    console.log(4)
+  );
+
+  await Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => console.log(7), 0);
+}
+
+asyncTask();
+
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+*/
+
+/*
+// 123
+let count = 1;
+
+function doSomething() {
+  console.log(count++);
+  if (count <= 7) {
+    setTimeout(doSomething, 0);
+  }
+}
+
+doSomething();
+
+// 1
+// 2
+// 3
+// 4
+// 5
+// 6
+// 7
+*/
+
+/*
+// 124
+const promise1 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 100, "one")
+);
+const promise2 = new Promise((resolve, reject) =>
+  setTimeout(reject, 200, "two")
+);
+
+Promise.allSettled([promise1, promise2])
+  .then((results) =>
+    results.forEach((result) => console.log(result.status, result.value))
+  )
+  .catch((error) => console.error(error));
+
+Promise.race([promise1, promise2])
+  .then((value) => console.log(value))
+  .catch((error) => console.error(error));
+
+// one
+// fulfiled: one
+// rejected: undefined
+*/
+
+/*
+// 125
+const promise1 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 100, "one")
+);
+const promise2 = new Promise((resolve, reject) =>
+  setTimeout(reject, 200, "two")
+);
+const promise3 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 300, "three")
+);
+
+Promise.any([promise1, promise2, promise3])
+  .then((value) => console.log(value))
+  .catch((errors) => console.error(errors));
+
+// one
+*/
+
+/*
+// 126
+Promise.resolve("resolved")
+  .then((value) => {
+    console.log(value);
+    return Promise.reject("rejected");
+  })
+  .then((value) => console.log(value))
+  .catch((error) => console.error(error));
+
+// resolved
+// rejected
+*/
+
+/*
+// 127
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("resolved");
+  }, 1000);
+});
+
+promise
+  .then((value) => console.log(value))
+  .catch((error) => console.error(error))
+  .finally(() => console.log("finally"));
+
+  // resolved
+  // finally
+  */
+
+/*
+// 128
+async function asyncTask() {
+  const promise1 = new Promise((resolve, reject) =>
+    setTimeout(resolve, 100, "one")
+  );
+  const promise2 = new Promise((resolve, reject) =>
+    setTimeout(resolve, 200, "two")
+  );
+
+  const [result1, result2] = await Promise.all([promise1, promise2]);
+  console.log(result1, result2);
+}
+
+asyncTask();
+
+// one, two
+*/
+
+/*
+// 129
+console.log("Task 1");
+
+setTimeout(() => {
+  console.log("Task 2");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Task 3");
+});
+
+console.log("Task 4");
+
+// 1
+// 4
+// 3
+// 2
+*/
+
+// 130
