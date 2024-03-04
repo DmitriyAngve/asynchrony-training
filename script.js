@@ -3211,4 +3211,613 @@ console.log("Task 4");
 // 2
 */
 
+/*
 // 130
+async function taskTwo() {
+  console.log("Task 1");
+
+  await new Promise((resolve) => setTimeout(resolve, 0));
+
+  console.log("Task 2");
+}
+
+taskTwo();
+
+console.log("Task 3");
+
+// 1
+// 3
+// 2
+*/
+
+/*
+// 131
+console.log("Task 1");
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log("Task 2");
+  }, 0);
+}
+
+console.log("Task 3");
+
+// 1
+// 3
+// 2
+// 2
+// 2
+*/
+
+/*
+// 132
+console.log("Task 1");
+
+const promise1 = new Promise((resolve) => setTimeout(resolve, 2000, "Task 2"));
+const promise2 = new Promise((resolve) => setTimeout(resolve, 1000, "Task 3"));
+
+Promise.all([promise1, promise2]).then(([result1, result2]) => {
+  console.log(result1);
+  console.log(result2);
+});
+
+console.log("Task 4");
+
+// 1
+// 4
+// 2
+// 3
+*/
+
+/*
+// 133
+console.log("Task 1");
+
+const taskTwo = () =>
+  new Promise((resolve) => setTimeout(resolve, 0, "Task 2"));
+
+const executeTasks = async () => {
+  console.log(await taskTwo());
+  console.log("Task 3");
+};
+
+executeTasks();
+
+console.log("Task 4");
+
+// 1
+// 4
+// 2
+// 3
+*/
+/*
+// 134
+const recursiveTask = (count) => {
+  if (count <= 3) {
+    setTimeout(() => {
+      console.log("Task 2");
+      recursiveTask(count + 1);
+    }, 1000);
+  }
+};
+
+console.log("Task 1");
+
+recursiveTask(1);
+
+console.log("Task 3");
+
+// Task 1
+// Task 3
+// Task 2
+// Task 2
+// Task 2
+*/
+
+/*
+// 135
+console.log("Task 1");
+
+const taskTwo = () =>
+  new Promise((resolve) => setInterval(() => resolve("Task 2"), 1000));
+
+taskTwo().then((result) => console.log(result));
+
+setTimeout(() => console.log("Task 3"), 5000);
+
+// Task 1
+// Task 2
+// Task 3
+*/
+
+/*
+// 136
+console.log("Task 1");
+
+const promise1 = new Promise((resolve) => setTimeout(resolve, 3000, "Task 2"));
+const promise2 = new Promise((resolve) => setTimeout(resolve, 2000, "Task 3"));
+
+Promise.race([promise1, promise2]).then((result) => console.log(result));
+
+console.log("Task 4");
+
+// Task 1
+// Task 4
+// Task 3
+*/
+
+/*
+// 137
+const taskTwo = () =>
+  new Promise((resolve) => setTimeout(resolve, 2000, "Task 2"));
+
+console.log("Task 1");
+
+(async () => {
+  console.log(await taskTwo());
+})();
+
+console.log("Task 3");
+
+// 1
+// 3
+// 2
+*/
+
+/*
+// 138
+console.log("Task 1");
+
+const recursiveTask = (count) => {
+  if (count <= 3) {
+    setTimeout(() => {
+      console.log(`Task ${count}`);
+      recursiveTask(count + 1);
+    }, 1000);
+  }
+};
+
+recursiveTask(2);
+
+console.log("Task 2");
+
+// Task 1
+// Task 2
+// Task 2
+// Task 3
+*/
+
+/*
+// 139
+console.log("Task 1");
+
+const taskTwo = () =>
+  new Promise((resolve) => setTimeout(resolve, 2000, "Task 2"));
+
+(async () => {
+  console.log(await taskTwo());
+  console.log("Task 3");
+})();
+
+console.log("Task 4");
+
+// Task 1
+// Task 4
+// Task 2
+// Task 3
+*/
+
+/*
+// 140
+console.log("Task 1");
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log("Task 2");
+  }, 1000 * i);
+}
+
+console.log("Task 3");
+
+// Task 1
+// Task 3
+// Task 2
+// Task 2
+// Task 2
+*/
+
+/*
+// 141
+console.log("Task 1");
+
+const interval = setInterval(() => {
+  console.log("Task 2");
+}, 1000);
+
+setTimeout(() => {
+  clearInterval(interval);
+  console.log("Task 3");
+}, 3000);
+
+// Task 1
+// Task 2
+// Task 2
+// Task 2
+// Task 3
+*/
+
+/*
+// 142
+const recursiveTask = (count) => {
+  if (count <= 3) {
+    setTimeout(() => {
+      console.log(`Task ${count}`);
+      recursiveTask(count + 1);
+    }, 1000);
+  }
+};
+
+console.log("Task 1");
+
+recursiveTask(1);
+
+console.log("Task 2");
+
+// Task 1
+// Task 2
+// Task 1
+// Task 2
+// Task 3
+*/
+
+/*
+// 143
+const taskOne = new Promise((resolve) => setTimeout(resolve, 2000, "Task 1"));
+const taskTwo = new Promise((resolve) => setTimeout(resolve, 1000, "Task 2"));
+
+console.log("Task 3");
+
+(async () => {
+  console.log(await Promise.race([taskOne, taskTwo]));
+})();
+
+// Task 3
+// Task 2
+*/
+
+/*
+// 144
+const taskTwo = () =>
+  new Promise((resolve) => setTimeout(resolve, 2000, "Task 2"));
+
+console.log("Task 1");
+
+(async () => {
+  console.log(await taskTwo());
+  console.log("Task 3");
+})();
+
+// Task 1
+// Task 2
+// Task 3
+*/
+
+/*
+// 145
+const taskOne = new Promise((resolve) => setTimeout(resolve, 3000, "Task 1"));
+const taskTwo = new Promise((resolve) => setTimeout(resolve, 2000, "Task 2"));
+
+(async () => {
+  console.log(await Promise.race([taskOne, taskTwo]));
+  console.log("Task 3");
+})();
+
+// Task 2
+// Task 3
+*/
+
+/*
+// 146
+const taskOne = () =>
+  new Promise((resolve) => setTimeout(resolve, 3000, "Task 1"));
+const taskTwo = () =>
+  new Promise((resolve) => setTimeout(resolve, 2000, "Task 2"));
+
+(async () => {
+  const results = await Promise.all([taskOne(), taskTwo()]);
+  console.log(results);
+  console.log("Task 3");
+})();
+
+// Task 1 Task 2
+// Task 3
+*/
+
+/*
+// 147
+console.log("Task 1");
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => {
+    console.log("Task 2");
+  }, 1000 * i);
+}
+
+console.log("Task 3");
+
+// Task 1
+// Task 3
+// Task 2
+// Task 2
+// Task 2
+*/
+
+/*
+// 148
+console.log("Task 1");
+
+const interval = setInterval(() => {
+  console.log("Task 2");
+}, 1000);
+
+setTimeout(() => {
+  clearInterval(interval);
+  console.log("Task 3");
+}, 3000);
+
+// Task 1
+// Task 2
+// Task 2
+// Task 2
+// Task 3
+*/
+
+/*
+// 149
+console.log("Task 1");
+
+const interval = setInterval(() => {
+  console.log("Task 2");
+}, 1000);
+
+const stopInterval = () => {
+  clearInterval(interval);
+  console.log("Task 3");
+};
+
+setTimeout(stopInterval, 5000);
+
+// Task 1
+// Task 2
+// Task 2
+// Task 2
+// Task 2
+// Task 2
+// Task 3
+*/
+
+/*
+// 150
+console.log("Task 1");
+
+const taskTwo = () =>
+  new Promise((resolve) => setInterval(() => resolve("Task 2"), 1000));
+
+(async () => {
+  console.log(await taskTwo());
+})();
+
+setTimeout(() => console.log("Task 3"), 5000);
+
+// Task 1
+// Task 2
+// Task 3
+*/
+
+/*
+// 151
+console.log("Task 1");
+
+const interval = setInterval(async () => {
+  console.log("Task 2");
+}, 1000);
+
+setTimeout(() => {
+  clearInterval(interval);
+  console.log("Task 3");
+}, 3000);
+
+// Task 1
+// Task 2
+// Task 2
+// Task 2
+// Task 3
+*/
+
+/*
+// 152
+let count = 0;
+
+console.log("Task 1");
+
+const interval = setInterval(() => {
+  console.log("Task 2");
+  count++;
+  if (count === 3) {
+    clearInterval(interval);
+    console.log("Task 3");
+  }
+}, 1000);
+
+// Task 1
+// Task 2
+// Task 2
+// Task 2
+// Task 3
+*/
+
+/*
+// 153
+console.log("Task 1");
+
+let count = 0;
+
+const interval = setInterval(() => {
+  count++;
+  console.log("Task 2");
+  if (count === 3) {
+    clearInterval(interval);
+    console.log("Task 3");
+  }
+}, 1000);
+
+// Task 1
+// Task 2
+// Task 2
+// Task 2
+// Task 3
+*/
+
+/*
+// 154
+function makeCounter() {
+  let counter = 0;
+  return function () {
+    return ++counter;
+  };
+}
+
+let someCounter = makeCounter();
+
+for (var i = 0; i < 10; i++) {
+  setTimeout(() => console.log(someCounter()));
+}
+
+console.log(someCounter());
+
+// 1 .. 11
+*/
+
+/*
+// 155
+const myPromise = (timeout) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(), timeout);
+  });
+};
+
+setTimeout(() => console.log("1"), 1000);
+
+myPromise(1000).then((res) => console.log("2"));
+
+setTimeout(() => console.log("3"), 100);
+
+myPromise(2000).then((res) => console.log("4"));
+
+setTimeout(() => console.log("5"), 2000);
+
+myPromise(1000).then((res) => console.log("6"));
+
+setTimeout(() => console.log("7"), 1000);
+
+myPromise(5000).then((res) => console.log("8"));
+
+// 3
+// 1
+// 2
+// 6
+// 7
+// 4
+// 5
+// 8
+*/
+
+/*
+// 156
+console.log("Start");
+
+const observer = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("Observer: Событие произошло");
+    resolve("Success");
+  }, 2000);
+});
+
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("Promise 1: Событие произошло");
+    resolve("Success");
+  }, 1000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log("Promise 2: Событие произошло");
+    resolve("Success");
+  }, 1500);
+});
+
+observer.then(() => {
+  console.log("Observer: Обработка события");
+});
+
+Promise.all([promise1, promise2]).then(() => {
+  console.log("Promise: Все события обработаны");
+});
+
+console.log("End");
+
+// Start
+// End
+// Promise 1: Событие произошло
+// Promise 2: Событие произошло
+// Promise: Все события обработаны
+// Observer: Событие произошло
+// Observer: Обработка события
+*/
+
+/*
+// 157
+queueMicrotask(() => {
+  console.log("1");
+});
+
+Promise.reject("2")
+  .catch((res1) => {
+    console.log("res1", res1);
+    return "4";
+  })
+  .then((res2) => {
+    console.log("res2", res2);
+  });
+
+queueMicrotask(() => {
+  console.log("3");
+});
+
+// 1
+// res1 2
+// res2 4
+// 3
+*/
+
+// 158
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"));
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
