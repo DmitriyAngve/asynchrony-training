@@ -3821,3 +3821,10 @@ async function funcTwo() {
 
 funcOne();
 funcTwo();
+
+// Promise!
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+//
