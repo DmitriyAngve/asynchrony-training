@@ -3801,6 +3801,7 @@ queueMicrotask(() => {
 // 3
 */
 
+/*
 // 158
 const myPromise = Promise.resolve(Promise.resolve("Promise!"));
 
@@ -3822,9 +3823,711 @@ async function funcTwo() {
 funcOne();
 funcTwo();
 
-// Promise!
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 159
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await myPromise;
+  console.log(res, "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
 // Promise! Результат funcOne
 // Last line! 1
 // Promise! Результат funcTwo
 // Last line! 2
-//
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 160
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"));
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise.then((res) => res);
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Last line! 1
+// Promise! Результат funcOne
+// Last line! 2
+// Promise! Результат funcOne
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 161
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Last line! 1
+// Timeout! 2
+// Timeout! 1
+*/
+
+/*
+// 162
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.race([myPromise]);
+  console.log(res, "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Last line! 1
+// Timeout! 2
+// Timeout! 1
+*/
+
+/*
+// 163
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await myPromise;
+  console.log(res, "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 164
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+function funcOne() {
+  Promise.all([myPromise]).then((res) =>
+    console.log(res[0], "Результат funcOne")
+  );
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Timeout! 1
+// Timeout! 2
+*/
+/*
+// 165
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+function funcOne() {
+  Promise.race([myPromise]).then((res) =>
+    console.log(res, "Результат funcOne")
+  );
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+*/
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Timeout! 1
+// Timeout! 2
+
+/*
+// 166
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.allSettled([myPromise]);
+  console.log(res[0].value, "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Last line! 1
+// Timeout! 2
+// Timeout! 1
+*/
+
+/*
+// 167
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+function funcOne() {
+  Promise.allSettled([myPromise]).then((res) =>
+    console.log(res[0].value, "Результат funcOne")
+  );
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Timeout 1
+// Timeout 2
+*/
+
+/*
+// 168
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcOne
+// Last line! 1
+// Timeout! 2
+// Timeout! 1
+*/
+
+/*
+// 169
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise.then((res) => res);
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 170
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await Promise.resolve(myPromise);
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 2
+// Promise! Результат funcTwo
+// Last line! 1
+// Timeout! 2
+// Timeout! 1
+*/
+
+/*
+// 171
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise.then((res) => Promise.resolve(res));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 172
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise.then((res) => Promise.all([res]));
+  console.log(res[0], "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 1
+// Timeout! 2
+
+*/
+
+/*
+// 173
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await Promise.resolve(myPromise.then((res) => res));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 174
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await Promise.resolve(myPromise);
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 175
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+async function funcOne() {
+  const res = await Promise.all([myPromise]);
+  console.log(res[0], "Результат funcOne");
+  setTimeout(() => console.log("Timeout! 1", 0));
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise.then((res) => Promise.resolve(res));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2", 0));
+  console.log("Last line! 2");
+}
+
+funcOne();
+funcTwo();
+
+// Promise! Результат funcOne
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 1
+// Timeout! 2
+*/
+
+/*
+// 176
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+
+async function funcThree() {
+  const res = await myPromise;
+  console.log(res, "Результат funcThree");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+
+funcOne();
+funcTwo();
+funcThree();
+
+// Last line! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Timeout! 1
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 177
+const myPromise = Promise.resolve(Promise.resolve("Promise!"));
+
+function funcOne() {
+  myPromise
+    .then((res) => console.log(res, "Результат funcOne"))
+    .then((res) => console.log("Then! 1"));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  myPromise.then((res) => console.log("Then! 2"));
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+
+async function funcThree() {
+  myPromise.then((res) => console.log(res, "Результат funcThree"));
+  const res = await myPromise;
+  console.log("Then! 3");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+
+funcOne();
+funcTwo();
+funcThree();
+
+// Last line! 1
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Then! 3
+// Last line! 3
+// Then! 1
+// Then! 2
+// Timeout! 1
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 178
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"))
+    .catch((err) => console.error(err));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise.catch((err) => console.error(err));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  try {
+    const res = await myPromise;
+    console.log(res, "Результат funcThree");
+  } catch (err) {
+    console.error(err);
+  }
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 3
+// Timeout! 2
+*/
+
+/*
+// 179
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"))
+    .catch((err) => console.error(err));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise.catch((err) => console.error(err));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  try {
+    const res = await myPromise;
+    console.log(res, "Результат funcThree");
+  } catch (err) {
+    console.error(err);
+  }
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 3
+// Timeout! 2
+*/
+
+// 180
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => console.log(res, "Результат funcOne"))
+    .then((res) => console.log("Then! 1"));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  myPromise.then((res) => console.log("Then! 2"));
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  myPromise.then((res) => console.log(res, "Результат funcThree"));
+  const res = await myPromise;
+  console.log("Then! 3");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+
+// Last line! 1
+// Timeout! 1
