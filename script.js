@@ -4500,6 +4500,7 @@ funcThree();
 // Timeout! 2
 */
 
+/*
 // 180
 const myPromise = new Promise((resolve, reject) => {
   setTimeout(() => resolve("Promise!"), 1000);
@@ -4531,3 +4532,1512 @@ funcThree();
 
 // Last line! 1
 // Timeout! 1
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Then! 3
+// Last line! 3
+// Then! 1
+// Then! 2
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 181
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"));
+  console.log("Last line! 1");
+  setTimeout(() => console.log("Timeout! 1"), 0);
+}
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  console.log("Last line! 2");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+}
+async function funcThree() {
+  const res = await myPromise;
+  console.log(res, "Результат funcThree");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 182
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise.catch((err) => console.error(err));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  try {
+    const res = await myPromise;
+    console.log(res, "Результат funcThree");
+  } catch (err) {
+    console.error(err);
+  }
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcTwo
+// Last line! 3
+// Promise! Результат funcOne
+// Promise! Результат funcThree
+// Last line! 2
+// Timeout! 3
+// Timeout! 2
+*/
+
+/*
+// 183
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"));
+  console.log("Last line! 1");
+  setTimeout(() => console.log("Timeout! 1"), 0);
+}
+async function funcTwo() {
+  const res = await myPromise.catch((err) => console.error(err));
+  console.log(res, "Результат funcTwo");
+  console.log("Last line! 2");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+}
+async function funcThree() {
+  const res = await myPromise;
+  console.log(res, "Результат funcThree");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 3
+// Timeout! 2
+*/
+
+/*
+// 184
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"))
+    .catch((err) => console.error(err));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise.catch((err) => console.error(err));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  try {
+    const res = await myPromise;
+    console.log(res, "Результат funcThree");
+  } catch (err) {
+    console.error(err);
+  }
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 3
+// Timeout! 2
+*/
+
+/*
+// 185
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => console.log(res, "Результат funcOne"))
+    .then((res) => console.log("Then! 1"));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  myPromise.then((res) => console.log("Then! 2"));
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  myPromise.then((res) => console.log(res, "Результат funcThree"));
+  const res = await myPromise;
+  console.log("Then! 3");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Then! 3
+// Last line! 3
+// Then! 1
+// Then! 2
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 186
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"))
+    .catch((err) => console.error(err));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise.catch((err) => console.error(err));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+
+async function funcThree() {
+  try {
+    const res = await myPromise;
+    console.log(res, "Результат funcThree");
+  } catch (err) {
+    console.error(err);
+  }
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 3
+// Timeout! 2
+*/
+
+/*
+// 187
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+
+function funcOne() {
+  myPromise
+    .then((res) => console.log(res, "Результат funcOne"))
+    .then((res) => console.log("Then! 1"));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  myPromise.then((res) => console.log("Then! 2"));
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+
+async function funcThree() {
+  myPromise.then((res) => console.log(res, "Результат funcThree"));
+  const res = await myPromise;
+  console.log("Then! 3");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Then! 3
+// Last line! 3
+// Then! 1
+// Then! 2
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 190
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+
+function funcOne() {
+  myPromise
+    .then((res) => res)
+    .then((res) => console.log(res, "Результат funcOne"))
+    .catch((err) => console.error(err));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise.catch((err) => console.error(err));
+  console.log(res, "Результат funcTwo");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  try {
+    const res = await myPromise;
+    console.log(res, "Результат funcThree");
+  } catch (err) {
+    console.error(err);
+  }
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcThree
+// Last line! 3
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Timeout! 3
+// Timeout! 2
+*/
+
+/*
+// 191
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => console.log(res, "Результат funcOne"))
+    .then((res) => console.log("Then! 1"));
+  setTimeout(() => console.log("Timeout! 1"), 0);
+  console.log("Last line! 1");
+}
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  myPromise.then((res) => console.log("Then! 2"));
+  setTimeout(() => console.log("Timeout! 2"), 0);
+  console.log("Last line! 2");
+}
+async function funcThree() {
+  myPromise.then((res) => console.log(res, "Результат funcThree"));
+  const res = await myPromise;
+  console.log("Then! 3");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Then! 3
+// Last line! 3
+// Then! 1
+// Then! 2
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 192
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise!"), 1000);
+});
+function funcOne() {
+  myPromise
+    .then((res) => console.log(res, "Результат funcOne"))
+    .then((res) => console.log("Then! 1"));
+  console.log("Last line! 1");
+  setTimeout(() => console.log("Timeout! 1"), 0);
+}
+async function funcTwo() {
+  const res = await myPromise;
+  console.log(res, "Результат funcTwo");
+  console.log("Last line! 2");
+  setTimeout(() => console.log("Timeout! 2"), 0);
+}
+async function funcThree() {
+  const res = await myPromise;
+  console.log(res, "Результат funcThree");
+  setTimeout(() => console.log("Timeout! 3"), 0);
+  console.log("Last line! 3");
+}
+funcOne();
+funcTwo();
+funcThree();
+// Last line! 1
+// Timeout! 1
+// Promise! Результат funcOne
+// Promise! Результат funcTwo
+// Last line! 2
+// Promise! Результат funcThree
+// Last line! 3
+// Then! !
+// Timeout! 2
+// Timeout! 3
+*/
+
+/*
+// 193
+console.log("First line!");
+setTimeout(() => console.log("Timeout!"), 0);
+console.log("Last line!");
+// First line!
+// Last line!
+// Timeout
+*/
+
+/*
+// 194
+const promise = new Promise((resolve, reject) => {
+  console.log("Inside Promise executor");
+  resolve("Promise resolved!");
+});
+
+promise.then((value) => console.log(value));
+console.log("Last line!");
+// Inside Promise executor
+// Last line!
+// Promise resolved!
+*/
+
+/*
+// 195
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise resolved!"), 1000);
+});
+
+console.log("First line!");
+promise.then((value) => console.log(value));
+console.log("Last line!");
+
+// First line!
+// Last line!
+// Promise resolved!
+*/
+
+/*
+// 196
+console.log("First line!");
+setTimeout(() => console.log("Timeout 1!"), 0);
+setTimeout(() => console.log("Timeout 2!"), 0);
+console.log("Last line!");
+// First line!
+// Last line!
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 197
+setTimeout(() => console.log("Timeout 1!"), 0);
+Promise.resolve().then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout 2!"), 0);
+console.log("Last line!");
+
+// Last line!
+// Promise resolved!
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 198
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise resolved!"), 1000);
+});
+
+console.log("First line!");
+promise.then((value) => console.log(value));
+setTimeout(() => console.log("Timeout!"), 0);
+console.log("Last line!");
+// First line!
+// Last
+// Timeout!
+// Promise resolved!
+*/
+
+/*
+// 199
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 0);
+
+setTimeout(() => console.log("Timeout 2!"), 0);
+console.log("Last line!");
+
+// Last line!
+// Timeout1 !
+// Promise resolved!
+// Timeout2 !
+*/
+
+/*
+// 200
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise resolved!"), 1000);
+});
+
+promise.then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout!"), 0);
+console.log("Last line!");
+
+// Last line!
+// Timeout !
+// Promise resolved!
+*/
+
+/*
+// 201
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("Promise resolved!"), 1000);
+});
+
+console.log("First line!");
+promise.then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout!"), 0);
+console.log("Last line!");
+
+// First line!
+// Last line!
+// Timeout !
+// Promise resolved!
+*/
+
+/*
+// 202
+console.log("First line!");
+setTimeout(() => console.log("Timeout 1!"), 100);
+setTimeout(() => console.log("Timeout 2!"), 0);
+console.log("Last line!");
+
+// First line!
+// Last line!
+// Timeout 2!
+// Timeout 1!
+*/
+
+/*
+// 203
+console.log("First line!");
+
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 0);
+
+setTimeout(() => console.log("Timeout 2!"), 0);
+
+console.log("Last line!");
+
+// First
+// Last
+// Timeout 1!
+// Promise resolved!
+// Timeout 2!
+*/
+
+/*
+// 204
+console.log("First line!");
+
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise 1 resolved!");
+  setTimeout(() => console.log("Timeout 2!"), 0);
+});
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise 1 resolved!
+// Timeout 1!
+// Promise resolved!
+// Timeout 2!
+*/
+
+/*
+// 205
+console.log("First line!");
+
+setTimeout(() => console.log("Timeout 1!"), 0);
+
+Promise.resolve().then(() => console.log("Promise resolved!"));
+
+setTimeout(() => console.log("Timeout 2!"), 0);
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise resolved!
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 206
+console.log("First line!");
+
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 0);
+
+setTimeout(() => {
+  console.log("Timeout 2!");
+  Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+}, 0);
+
+console.log("Last line!");
+
+// First
+// Last
+// Timeout 1!
+// Promise resolved!
+// Timeout 2!
+// Promise 2 resolved!
+*/
+
+/*
+// 207
+console.log("First line!");
+
+setTimeout(() => console.log("Timeout 1!"), 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise resolved!");
+  setTimeout(() => console.log("Timeout 2!"), 0);
+});
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise resolved!
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 208
+console.log("First line!");
+
+setTimeout(() => console.log("Timeout 1!"), 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise resolved!");
+  Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+});
+
+console.log("Last line!");
+// First
+// Last
+// Promise resolved!
+// Promise 2 resolved!
+// Timeout 1!
+*/
+
+/*
+// 209
+console.log("First line!");
+
+Promise.resolve().then(() => {
+  console.log("Promise resolved!");
+  setTimeout(() => console.log("Timeout 1!"), 0);
+});
+
+setTimeout(() => console.log("Timeout 2!"), 0);
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise resolved
+// Timeout 2!
+// Timeout 1!
+*/
+
+/*
+// 210
+console.log("First line!");
+
+setTimeout(() => console.log("Timeout 1!"), 0);
+
+Promise.resolve().then(() => console.log("Promise resolved!"));
+
+setTimeout(() => console.log("Timeout 2!"), 0);
+
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise resolved
+// Promise 2 resolved!
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 211
+console.log("First line!");
+
+setTimeout(() => console.log("Timeout 1!"), 0);
+
+Promise.resolve().then(() => console.log("Promise resolved!"));
+
+setTimeout(() => console.log("Timeout 2!"), 0);
+
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+
+Promise.resolve().then(() => console.log("Promise 3 resolved!"));
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise resolved
+// Promise 2 resolved
+// Promise 3 resolved
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 212
+console.log("First line!");
+
+Promise.resolve().then(() => console.log("Promise resolved!"));
+
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+
+setTimeout(() => console.log("Timeout 1!"), 0);
+
+setTimeout(() => console.log("Timeout 2!"), 0);
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise resolved
+// Promise 2 resolved
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 213
+console.log("First line!");
+
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 0);
+
+setTimeout(() => {
+  console.log("Timeout 2!");
+  Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+}, 0);
+
+console.log("Last line!");
+// First
+// Last
+// Timeout 1!
+// Promise resolved!
+// Timeout 2!
+// Promise 2 resolved!
+*/
+
+/*
+// 214
+console.log("First line!");
+
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 10);
+
+setTimeout(() => {
+  console.log("Timeout 2!");
+  Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+}, 0);
+
+console.log("Last line!");
+// First
+// Last
+// Timeout 2!
+// Promise 2 resolved!
+// Timeout 1!
+// Promise resolved!
+*/
+
+/*
+// 215
+console.log("First line!");
+
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 0);
+
+setTimeout(() => {
+  console.log("Timeout 2!");
+  Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+}, 10);
+
+console.log("Last line!");
+
+// First
+// Last
+// Timeout 1!
+// Promise resolved!
+// Timeout 2!
+// Promise 2 resolved!
+*/
+
+/*
+// 216
+console.log("First line!");
+
+setTimeout(() => {
+  console.log("Timeout 1!");
+  Promise.resolve().then(() => console.log("Promise resolved!"));
+}, 10);
+
+setTimeout(() => {
+  console.log("Timeout 2!");
+  Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+}, 10);
+
+console.log("Last line!");
+
+// First
+// Last
+// Timeout 1!
+// Promise resolved!
+// Timeout 2!
+// Promise 2 resolved!
+*/
+
+/*
+// 217
+console.log("First line!");
+
+Promise.resolve().then(() => {
+  console.log("Promise resolved!");
+  setTimeout(() => console.log("Timeout 1!"), 0);
+});
+
+setTimeout(() => {
+  console.log("Timeout 2!");
+  Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+}, 0);
+
+console.log("Last line!");
+
+// First
+// Last
+// Promise resolved!
+// Timeout 2!
+// Promise 2 resolved!
+// Timeout 1!
+*/
+
+/*
+// 218
+console.log("First line!");
+setTimeout(() => console.log("Timeout 1!"), 0);
+Promise.resolve().then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout 2!"), 0);
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+console.log("Last line!");
+
+// First
+// last
+// Promise resolved
+// Promise 2 resolved
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 219
+console.log("First line!");
+setTimeout(() => console.log("Timeout 1!"), 10);
+Promise.resolve().then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout 2!"), 0);
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+console.log("Last line!");
+
+// First
+// last
+// Promise resolved
+// Promise 2 resolved
+// Timeout 2!
+// Timeout 1!
+*/
+
+/*
+// 220
+console.log("First line!");
+setTimeout(() => console.log("Timeout 1!"), 0);
+Promise.resolve().then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout 2!"), 10);
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+console.log("Last line!");
+
+// First
+// last
+// Promise resolved
+// Promise 2 resolved
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 221
+console.log("First line!");
+setTimeout(() => console.log("Timeout 1!"), 10);
+Promise.resolve().then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout 2!"), 10);
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+console.log("Last line!");
+
+// First
+// last
+// Promise resolved
+// Promise 2 resolved
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 222
+console.log("First line!");
+Promise.resolve().then(() => console.log("Promise resolved!"));
+setTimeout(() => console.log("Timeout 1!"), 0);
+Promise.resolve().then(() => console.log("Promise 2 resolved!"));
+setTimeout(() => console.log("Timeout 2!"), 0);
+console.log("Last line!");
+
+// First
+// last
+// Promise resolved
+// Promise 2 resolved
+// Timeout 1!
+// Timeout 2!
+*/
+
+/*
+// 223
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 200);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 500);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 100);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 300);
+
+// in setTimeout3
+// in setTimeout1
+// in setTimeout4
+// in setTimeout2
+// in Promise 3
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 224
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 500);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 200);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 100);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 300);
+
+// in setTimeout3
+// in setTimeout2
+// in setTimeout4
+// in setTimeout1
+// in Promise 3
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 225
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 300);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 500);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 100);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 200);
+// in setTimeout3
+// in setTimeout4
+// in setTimeout1
+// in setTimeout2
+// in Promise 3
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 226
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 400);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 100);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 300);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 200);
+// in setTimeout2
+// in setTimeout4
+// in setTimeout3
+// in setTimeout1
+// in Promise 3
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 227
+const myPromise = (delay) =>
+  new Promise((res, rej) => {
+    setTimeout(res, delay);
+  });
+
+setTimeout(() => console.log("in setTimeout1"), 300);
+myPromise(1000).then((res) => console.log("in Promise 1"));
+
+setTimeout(() => console.log("in setTimeout2"), 200);
+myPromise(2000).then((res) => console.log("in Promise 2"));
+
+myPromise(500).then((res) => console.log("in Promise 3"));
+setTimeout(() => console.log("in setTimeout3"), 100);
+
+myPromise(1500).then((res) => console.log("in Promise 4"));
+setTimeout(() => console.log("in setTimeout4"), 400);
+
+// in setTimeout3
+// in setTimeout2
+// in setTimeout1
+// in setTimeout4
+// in Promise 3
+// in Promise 1
+// in Promise 4
+// in Promise 2
+*/
+
+/*
+// 228
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  });
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 0);
+}
+
+asyncTask();
+// 1
+// 6
+// 3
+// 5
+// 2
+// 4
+// 7
+*/
+
+/*
+// 229
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  }, 100);
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 50);
+}
+
+asyncTask();
+// 1
+// 6
+// 3
+// 5
+// 4
+// 7
+// 2
+*/
+
+/*
+// 230
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  });
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve, 50)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 0);
+}
+
+asyncTask();
+
+// 1
+// 6
+// 3
+// 5
+// 2
+// 7
+// 4
+*/
+
+/*
+// 231
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  });
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve, 10)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 0);
+}
+
+asyncTask();
+// 1
+// 6
+// 3
+// 5
+// 2
+// 7
+// 4
+*/
+
+/*
+// 232
+function asyncTask(callback) {
+  console.log(1);
+
+  setTimeout(() => {
+    console.log(2);
+  });
+
+  Promise.reject(3).catch(console.log);
+
+  new Promise((resolve) => setTimeout(resolve, 30)).then(() => console.log(4));
+
+  Promise.resolve(5).then(console.log);
+
+  console.log(6);
+
+  setTimeout(() => {
+    console.log(7);
+    if (callback) {
+      callback();
+    }
+  }, 0);
+}
+
+asyncTask();
+// 1
+// 6
+// 3
+// 5
+// 2
+// 7
+// 4
+*/
+
+/*
+// 233
+console.log("A");
+
+setTimeout(() => console.log("B"), 0);
+
+new Promise((resolve, reject) => {
+  console.log("C");
+  reject();
+}).catch(() => console.log("D"));
+
+console.log("E");
+// A
+// C
+// E
+// D
+// B
+*/
+
+/*
+// 234
+console.log("A");
+
+setTimeout(() => console.log("B"), 10);
+
+new Promise((resolve, reject) => {
+  console.log("C");
+  reject();
+}).catch(() => console.log("D"));
+
+console.log("E");
+
+// A
+// C
+// E
+
+// D
+// B 
+*/
+
+/*
+// 235
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Inside setTimeout 1");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise 1");
+    reject("Rejected from Promise 1");
+  }).catch((error) => console.error(error));
+}, 0);
+
+setTimeout(() => {
+  console.log("Inside setTimeout 2");
+}, 0);
+
+console.log("End");
+
+// Start
+// End
+// Inside setTimeout 1
+// Inside Promise 1
+// Rejected from Promise 1
+// Inside setTimeout 2
+*/
+
+/*
+// 236
+console.log("Begin");
+
+setTimeout(() => {
+  console.log("Inside setTimeout 1");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise 1");
+    resolve("Resolved from Promise 1");
+  }).then((result) => console.log(result));
+}, 0);
+
+setTimeout(() => {
+  console.log("Inside setTimeout 2");
+}, 0);
+
+console.log("Finish");
+// Begin
+// Finish
+// Inside setTimeout 1
+// Inside Promise 1
+// Resolved from Promise 1
+// Inside setTimeout 2
+*/
+
+/*
+// 237
+console.log("Starting");
+
+setTimeout(() => {
+  console.log("Inside setTimeout 1");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise 1");
+    resolve("Resolved from Promise 1");
+  }).then((result) => console.log(result)).catch((error) => console.error(error));
+}, 0);
+
+setTimeout(() => {
+  console.log("Inside setTimeout 2");
+}, 0);
+
+console.log("Ending");
+// Starting
+// Ending
+// Inside setTimeout 1
+// Inside Promise 1
+// Resolved from Promise 1
+// Inside setTimeout 2
+*/
+
+/*
+// 238
+console.log("Start");
+setTimeout(() => {
+  console.log("Inside setTimeout 1");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise 1");
+    resolve("Resolved from Promise 1");
+  })
+    .then((result) => {
+      console.log(result);
+      setTimeout(() => {
+        console.log("Inside setTimeout 3");
+      }, 0);
+    })
+    .catch((error) => console.error(error));
+}, 0);
+
+new Promise((resolve, reject) => {
+  console.log("Inside Promise 2");
+  reject("Rejected from Promise 2");
+}).catch((error) => {
+  console.error(error);
+  setTimeout(() => {
+    console.log("Inside setTimeout 2");
+  }, 0);
+});
+
+console.log("End");
+// Start
+// Inside Promise 2
+// End
+// Rejected from Promise 2
+// Inside setTimeout 1
+// Inside Promise 1
+// Resolved from Promise 1
+// Inside setTimeout 2
+// Inside setTimeout 3
+*/
+
+// 239
+console.log("Begin");
+
+async function complexFunction() {
+  console.log("Inside complexFunction");
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log("After awaiting Promise 1");
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log("After awaiting Promise 2");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+complexFunction().then(() => console.log("Complex function completed"));
+
+new Promise((resolve, reject) => {
+  console.log("Inside Promise 1");
+  reject("Rejected from Promise 1");
+}).catch((error) => {
+  console.error(error);
+  setTimeout(() => {
+    console.log("Inside setTimeout 1");
+  }, 0);
+});
+
+console.log("Finish");
+// Begin
+// Inside complexFunction
+// Inside Promise 1
+// Finish
+// Rejected from Promise 1
+// Inside setTimeout 1
+// After awaiting Promise 1
+// After awaiting Promise 2
+// Complex function completed
