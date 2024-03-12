@@ -6004,6 +6004,7 @@ console.log("End");
 // Inside setTimeout 3
 */
 
+/*
 // 239
 console.log("Begin");
 
@@ -6041,3 +6042,4 @@ console.log("Finish");
 // After awaiting Promise 1
 // After awaiting Promise 2
 // Complex function completed
+*/
