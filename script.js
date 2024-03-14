@@ -6043,3 +6043,82 @@ console.log("Finish");
 // After awaiting Promise 2
 // Complex function completed
 */
+
+/*
+// 240
+console.log("Starting");
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+fetchData("https://api.example.com/data").then(() =>
+  console.log("Data fetching complete")
+);
+setTimeout(() => {
+  console.log("Inside setTimeout 1");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise 1");
+    resolve("Resolved from Promise 1");
+  })
+    .then((result) => {
+      console.log(result);
+      setTimeout(() => {
+        console.log("Inside setTimeout 2");
+      }, 0);
+    })
+    .catch((error) => console.error(error));
+}, 0);
+console.log("Ending");
+// Starting
+// Ending
+// Inside setTimeout 1
+// Inside Promise 1
+// Resolved from Promise 1
+// Inside setTimeout 2
+// GET ERR
+// Failed to fetch
+// Data fetching complete
+*/
+
+/*
+// 241
+console.log("Start");
+async function complexFunction() {
+  console.log("Inside complexFunction");
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log("After awaiting Promise 1");
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log("After awaiting Promise 2");
+  } catch (error) {
+    console.error(error);
+  }
+}
+complexFunction().then(() => console.log("Complex function completed"));
+new Promise((resolve, reject) => {
+  console.log("Inside Promise 1");
+  reject("Rejected from Promise 1");
+}).catch((error) => {
+  console.error(error);
+  setTimeout(() => {
+    console.log("Inside setTimeout 1");
+  }, 0);
+});
+console.log("End");
+// Start
+// Inside complexFunction
+// Inside Promise 1
+// End
+// Rejected from Promise 1
+// Inside setTimeout 1
+// After awaiting Promise 1
+// After awaiting Promise 2
+// Complex function completed
+*/
+
+// 242
