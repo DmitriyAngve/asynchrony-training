@@ -6121,4 +6121,197 @@ console.log("End");
 // Complex function completed
 */
 
+/*
 // 242
+console.log("Initializing");
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("Fetched data:", data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+fetchData("https://api.example.com/data")
+  .then(() => console.log("Data fetching complete"))
+  .catch((error) => console.error("Error during data fetching:", error));
+setTimeout(() => {
+  console.log("Inside setTimeout 1");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise 1");
+    reject("Rejected from Promise 1");
+  }).catch((error) => {
+    console.error(error);
+    setTimeout(() => {
+      console.log("Inside setTimeout 2");
+    }, 0);
+  });
+}, 0);
+console.log("Initialization completed");
+// Initializing
+// Initialization completed
+// Inside setTimeout 1
+// Inside Promise 1
+// Rejected from Promise 1
+// Inside setTimeout 2
+// GET ERR
+// Failed to fetch Data fetching complete
+*/
+
+/*
+// 243
+console.log("Start execution");
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const mainFunction = async () => {
+  console.log("Inside mainFunction");
+  try {
+    await delay(1000);
+    console.log("After 1-second delay");
+    await delay(2000);
+    console.log("After another 2-second delay");
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+mainFunction().then(() => console.log("Execution completed"));
+new Promise((resolve, reject) => {
+  console.log("Inside Promise");
+  reject("Rejected from Promise");
+}).catch((error) => {
+  console.error(error);
+  setTimeout(() => {
+    console.log("Inside setTimeout");
+  }, 0);
+});
+console.log("End of execution");
+// Start execution
+// Inside mainFunction
+// Inside Promise
+// End of execution
+// Rejected from Promise
+// Inside setTimeout
+// After 1-second delay
+// After another 2-second delay
+// Execution completed
+*/
+
+/*
+// 244
+console.log("Initializing");
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("Fetched data:", data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+fetchData("https://api.example.com/data")
+  .then(() => console.log("Data fetching complete"))
+  .catch((error) => console.error("Error during data fetching:", error));
+setTimeout(() => {
+  console.log("Inside setTimeout 1");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise 1");
+    reject("Rejected from Promise 1");
+  }).catch((error) => {
+    console.error(error);
+    setTimeout(() => {
+      console.log("Inside setTimeout 2");
+    }, 0);
+  });
+}, 0);
+console.log("Initialization completed");
+// Initializing
+// Initialization completed
+// Inside setTimeout 1
+// Inside Promise 1
+// Rejected from Promise 1
+// Inside setTimeout 2
+// GET ERR
+// Error fetching data: Failed to fetch
+// Data fetching complete
+*/
+
+/*
+// 245
+console.log("Initializing...");
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log("Fetched data:", data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+fetchData("https://api.example.com/data")
+  .then(() => console.log("Data fetching complete"))
+  .catch((error) => console.error("Error during data fetching:", error));
+setTimeout(() => {
+  console.log("Inside setTimeout");
+  new Promise((resolve, reject) => {
+    console.log("Inside Promise");
+    reject("Rejected from Promise");
+  }).catch((error) => {
+    console.error(error);
+    setTimeout(() => {
+      console.log("Inside nested setTimeout");
+    }, 0);
+  });
+}, 0);
+console.log("Initialization completed");
+// Initializing...
+// Initialization completed
+// Inside setTimeout
+// Inside Promise
+// Rejected from Promise
+// Inside nested setTimeout
+// GET ERR
+// Error fetching data: Failed to fetch
+// Data fetching complete
+*/
+
+/*
+// 246
+console.log("Starting execution...");
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const mainFunction = async () => {
+  console.log("Inside mainFunction");
+  try {
+    await delay(1000);
+    console.log("After 1-second delay");
+    await delay(2000);
+    console.log("After another 2-second delay");
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+mainFunction().then(() => console.log("Execution completed"));
+
+new Promise((resolve, reject) => {
+  console.log("Inside Promise");
+  reject("Rejected from Promise");
+}).catch((error) => {
+  console.error(error);
+  setTimeout(() => {
+    console.log("Inside setTimeout");
+  }, 0);
+});
+
+console.log("End of execution");
+// Starting execution...
+// Inside mainFunction
+// Inside Promise
+// End of execution
+// Rejected from Promise
+// Inside setTimeout
+// After 1-second delay
+// After another 2-second delay
+// Execution completed
+*/
